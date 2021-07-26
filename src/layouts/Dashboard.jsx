@@ -1,15 +1,25 @@
 import React from "react";
-import { Container } from "semantic-ui-react";
+// import { Container } from "semantic-ui-react";
 import Categories from "./Categories";
-import Navi from "./Navi";
+import JobPosition from "../pages/JobPosition";
+import { Grid } from 'semantic-ui-react'
+
+
 
 export default function Dashboard() {
   return (
     <div>
-           <Navi />
-        <Container>
-        <Categories/>
-        </Container>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={4}>
+          <Categories />
+          </Grid.Column>
+          <Grid.Column width={12}>
+          <JobPosition/>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+        
     </div>
   );
 }

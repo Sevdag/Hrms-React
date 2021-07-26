@@ -1,37 +1,38 @@
-import React from 'react'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import React, { useEffect, useState } from 'react'
+import { Icon, Menu, Table } from 'semantic-ui-react'
+import JobService from './../services/jobService';
 
 
-export default function CandidateList() {
+export default function JobPosition() {
+
+    const [jobs, setJobs]=useState([]);
+
+    useEffect(()=>{
+        let jobService = new JobService()
+        jobService.getJob().then(result=>setJobs(result.data.data))
+    })
+
     return (
         <div>
            <Table celled>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>Header</Table.HeaderCell>
-        <Table.HeaderCell>Header</Table.HeaderCell>
-        <Table.HeaderCell>Header</Table.HeaderCell>
+        <Table.HeaderCell>id</Table.HeaderCell>
+        <Table.HeaderCell>JobName</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
-      <Table.Row>
-        <Table.Cell>
-          <Label ribbon>First</Label>
-        </Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
+        {
+            jobs.map((job)=>(
+                <Table.Row key={job.id}>
+                <Table.Cell>{job.id}</Table.Cell>
+                <Table.Cell>{job.jobName}</Table.Cell>
+        
+              </Table.Row>
+            ))
+        }
+   
     </Table.Body>
 
     <Table.Footer>
