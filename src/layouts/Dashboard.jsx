@@ -1,8 +1,8 @@
 import React from "react";
 // import { Container } from "semantic-ui-react";
 import Categories from "./Categories";
-import JobPosition from "../pages/JobPosition";
 import { Grid } from 'semantic-ui-react'
+import CandidateList from './../pages/CandidateList';
 
 
 
@@ -15,7 +15,8 @@ export default function Dashboard() {
           <Categories />
           </Grid.Column>
           <Grid.Column width={12}>
-          <JobPosition/>
+          {/* <JobPosition/> */}
+<CandidateList/>
           </Grid.Column>
         </Grid.Row>
       </Grid>
